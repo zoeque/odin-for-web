@@ -29,14 +29,14 @@ public class OdinSystemFactoryTest {
 
   @Test
   public void whenSystemDoesNotExistInDb_createNewInstance() {
-    Try<OdinSystem> odinSystems = factory.create(false, false, 3);
+    Try<OdinSystem> odinSystems = factory.create(false, false, 3, 0);
     Assertions.assertTrue(odinSystems.isSuccess());
   }
 
   @Test
   public void whenSystemExistsInDb_doesNotCreateNewInstance() {
-    repository.save(new OdinSystem(false, false, 3));
-    Try<OdinSystem> odinSystems = factory.create(false, false, 3);
+    repository.save(new OdinSystem(false, false, 3, 0));
+    Try<OdinSystem> odinSystems = factory.create(false, false, 3, 0);
     Assertions.assertTrue(odinSystems.isFailure());
   }
 }

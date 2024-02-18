@@ -18,13 +18,14 @@ public class OdinSystemFactory {
   }
   public Try<OdinSystem> create(Boolean randomFlag,
                                 Boolean studiedFlag,
-                                Integer listSize) {
+                                Integer listSize,
+                                Integer listIndex) {
     try {
       List<OdinSystem> all = repository.findAll();
       if(all.size() > 0){
         throw new IllegalStateException("Setting cannot be saved more than two entities.");
       }
-      return Try.success(new OdinSystem(randomFlag, studiedFlag, listSize));
+      return Try.success(new OdinSystem(randomFlag, studiedFlag, listSize, listIndex));
     } catch (Exception e) {
       return Try.failure(e);
     }

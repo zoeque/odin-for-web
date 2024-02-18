@@ -35,7 +35,7 @@ public class OdinSystemServiceTest {
 
   @Test
   public void attemptCreateSystem_ifEntityIsAlreadyExist_returnFailure() {
-    repository.save(new OdinSystem(false, false, 3));
+    repository.save(new OdinSystem(false, false, 3, 0));
     Try<OdinSystem> odinSystems = service.create();
     Assertions.assertTrue(odinSystems.isFailure());
   }

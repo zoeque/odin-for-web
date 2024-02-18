@@ -27,7 +27,7 @@ public class OdinSystemService {
    */
   public Try<OdinSystem> create() {
     try {
-      OdinSystem odinSystem = factory.create(false, false, 3).get();
+      OdinSystem odinSystem = factory.create(false, false, 3, 0).get();
       repository.save(odinSystem);
       return Try.success(odinSystem);
     } catch (Exception e) {

@@ -12,14 +12,14 @@ public class OdinSystemTest {
   @Test
   public void givenTooLargeListSize_throwsException() {
     Assertions.assertThrows(IllegalArgumentException.class, () -> {
-      OdinSystem odinSystem = new OdinSystem(false, false, 1000);
+      OdinSystem odinSystem = new OdinSystem(false, false, 1000, 0);
     });
   }
 
   @Test
   public void givenTooSmallListSize_throwsException() {
     Assertions.assertThrows(IllegalArgumentException.class, () -> {
-      OdinSystem odinSystem = new OdinSystem(false, false, 0);
+      OdinSystem odinSystem = new OdinSystem(false, false, 0, 0);
     });
   }
 }

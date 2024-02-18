@@ -1,0 +1,23 @@
+@startuml
+package System {
+  class OdinSystem {
+    Boolean learnedFlag
+    Boolean randomFlag
+    Integer listSize
+    Integer listIndex
+    + OdinSystem updateIndex()
+    + OdinSystem resetIndex()
+  }
+  class OdinSystemFactory {
+    + OdinSystem create()
+  }
+}
+package Application {
+  class Word {
+
+  }
+}
+
+Application -- System
+
+@enduml

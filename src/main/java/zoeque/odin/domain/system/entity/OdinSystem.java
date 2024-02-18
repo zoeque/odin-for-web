@@ -1,5 +1,6 @@
 package zoeque.odin.domain.system.entity;
 
+import io.vavr.control.Try;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,13 +27,16 @@ public class OdinSystem {
   Boolean randomFlag;
   Boolean studiedFlag;
   Integer listSize;
+  Integer listIndex;
 
   public OdinSystem(Boolean randomFlag,
                     Boolean studiedFlag,
-                    Integer listSize) {
+                    Integer listSize,
+                    Integer listIndex) {
     setRandomFlag(randomFlag);
     setStudiedFlag(studiedFlag);
     setListSize(listSize);
+    setListIndex(listIndex);
   }
 
   private void setRandomFlag(Boolean randomFlag) {
@@ -56,5 +60,37 @@ public class OdinSystem {
       throw new IllegalArgumentException("List size is too small or large:" + listSize);
     }
     this.listSize = listSize;
+  }
+
+  private void setListIndex(Integer listIndex) {
+    if (listIndex == null) {
+      throw new IllegalArgumentException("List index must not be null");
+    }
+    this.listIndex = listIndex;
+  }
+
+  /**
+   * Reset the index to the zero.
+   *
+   * @return updated instance of {@link OdinSystem}.
+   */
+  public Try<OdinSystem> resetIndex() {
+    this.listIndex = 0;
+    return Try.success(this);
+  }
+
+  /**
+   * Set start index of the all words list.
+   *
+   * @param index the start index of the list.
+   * @return {@link OdinSystem} with updated index.
+   */
+  public Try<OdinSystem> updateIndex(Integer index) {
+    try {
+      setListIndex(index);
+      return Try.success(this);
+    } catch (Exception e) {
+      return Try.failure(e);
+    }
   }
 }

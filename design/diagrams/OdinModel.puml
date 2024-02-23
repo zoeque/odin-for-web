@@ -1,24 +1,13 @@
 @startuml
 package System {
   class OdinSystem {
+    Boolean learnedFlag
+    Boolean randomFlag
+    Integer listSize
+    Integer listIndex
     + OdinSystem updateIndex()
     + OdinSystem resetIndex()
   }
-  class OdinSystemFactory {
-    + OdinSystem create()
-  }
-  class OdinSystemService {
-    + OdinSystem create()
-  }
-  class OdinSystemController {
-    + ResponseEntity create()
-    + ResponseEntity edit()
-    + ResponseEntity resetIndex()
-  }
-  OdinSystemController -- OdinSystemService : > holds
-  OdinSystemService -- OdinSystemFactory :  > holds
-
-  OdinSystemFactory -- "1" OdinSystem
 }
 package Application {
   class Term {

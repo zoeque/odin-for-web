@@ -1,14 +1,17 @@
 package zoeque.odin.usecase.system;
 
 import io.vavr.control.Try;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import zoeque.odin.domain.system.entity.OdinSystem;
 import zoeque.odin.domain.system.factory.OdinSystemFactory;
 import zoeque.odin.domain.system.repository.OdinSystemRepository;
+import zoeque.odin.dto.OdinSystemDto;
 
 /**
  * The usecase class to create or edit the system option.
  */
+@Slf4j
 @Service
 public class OdinSystemService {
   OdinSystemFactory factory;
@@ -34,4 +37,25 @@ public class OdinSystemService {
       return Try.failure(e);
     }
   }
+
+  public Try<OdinSystem> edit(OdinSystemDto dto) {
+    try {
+      OdinSystem odinSystem = repository.findAll().get(0);
+      if (odinSystem == null) {
+        throw new IllegalStateException("Odin system does not exist in db");
+      }
+
+      Try<OdinSystem> editedSystem = odinSystem.edit(
+              dto.getRandomFlag(),
+              dto.getMemorizedFlag(),
+              dto.getListSize(),
+              dto.getListIndex()
+      );
+      return Try.success(editedSystem.get());
+    } catch (Exception e) {
+      log.warn("Cannot update the system option");
+      return Try.failure(e);
+    }
+  }
+
 }

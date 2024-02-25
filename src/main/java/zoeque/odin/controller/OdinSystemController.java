@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import zoeque.odin.domain.system.entity.OdinSystem;
 import zoeque.odin.usecase.system.OdinSystemService;
 
-@RestController("/system")
+@RestController
 @CrossOrigin(origins = "*")
-@Component
 public class OdinSystemController {
   OdinSystemService service;
 
@@ -18,7 +17,7 @@ public class OdinSystemController {
     this.service = service;
   }
 
-  @PostMapping("/create")
+  @PostMapping("/system/create")
   public ResponseEntity create() {
     try {
       OdinSystem odinSystem = service.create().get();

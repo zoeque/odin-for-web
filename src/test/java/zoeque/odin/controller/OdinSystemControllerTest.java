@@ -10,6 +10,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import zoeque.odin.domain.system.entity.OdinSystem;
+import zoeque.odin.domain.system.repository.OdinSystemRepository;
+import zoeque.odin.dto.OdinSystemDto;
 import zoeque.odin.tool.DatabaseDropService;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -21,7 +24,11 @@ public class OdinSystemControllerTest {
   @Autowired
   DatabaseDropService dropService;
   @Autowired
+  ObjectMapper mapper;
+  @Autowired
   OdinSystemController controller;
+  @Autowired
+  OdinSystemRepository repository;
 
   @BeforeEach
   public void cleanup() {
@@ -35,5 +42,18 @@ public class OdinSystemControllerTest {
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(""))
             .andExpect(status().isOk());
+  }
+
+  @Test
+  public void givenOdinSystemInDb_whenAttemptToEdit_returns200() throws Exception {
+    repository.save(new OdinSystem(false, false, 1, 1));
+
+    OdinSystemDto dto = new OdinSystemDto(true, true, 1, 1);
+    String json = mapper.writeValueAsString(dto);
+
+    mvc.perform(post("/system/edit")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(json)).andExpect(status().isOk());
+
   }
 }

@@ -25,16 +25,16 @@ public class OdinSystem {
   long identifier;
 
   Boolean randomFlag;
-  Boolean studiedFlag;
+  Boolean memorizedFlag;
   Integer listSize;
   Integer listIndex;
 
   public OdinSystem(Boolean randomFlag,
-                    Boolean studiedFlag,
+                    Boolean memorizedFlag,
                     Integer listSize,
                     Integer listIndex) {
     setRandomFlag(randomFlag);
-    setStudiedFlag(studiedFlag);
+    setMemorizedFlag(memorizedFlag);
     setListSize(listSize);
     setListIndex(listIndex);
   }
@@ -46,11 +46,11 @@ public class OdinSystem {
     this.randomFlag = randomFlag;
   }
 
-  private void setStudiedFlag(Boolean studiedFlag) {
-    if (studiedFlag == null) {
+  private void setMemorizedFlag(Boolean memorizedFlag) {
+    if (memorizedFlag == null) {
       throw new IllegalArgumentException("Studied flag must not be null");
     }
-    this.studiedFlag = studiedFlag;
+    this.memorizedFlag = memorizedFlag;
   }
 
   private void setListSize(Integer listSize) {
@@ -88,6 +88,21 @@ public class OdinSystem {
   public Try<OdinSystem> updateIndex(Integer index) {
     try {
       setListIndex(index);
+      return Try.success(this);
+    } catch (Exception e) {
+      return Try.failure(e);
+    }
+  }
+
+  public Try<OdinSystem> edit(Boolean randomFlag,
+                              Boolean memorizedFlag,
+                              Integer listSize,
+                              Integer listIndex) {
+    try {
+      setRandomFlag(randomFlag);
+      setMemorizedFlag(memorizedFlag);
+      setListSize(listSize);
+      setListIndex(listIndex);
       return Try.success(this);
     } catch (Exception e) {
       return Try.failure(e);

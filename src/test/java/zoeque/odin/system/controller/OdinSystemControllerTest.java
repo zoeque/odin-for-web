@@ -1,4 +1,4 @@
-package zoeque.odin.controller;
+package zoeque.odin.system.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,9 +10,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import zoeque.odin.domain.system.entity.OdinSystem;
-import zoeque.odin.domain.system.repository.OdinSystemRepository;
-import zoeque.odin.dto.OdinSystemDto;
+import zoeque.odin.system.domain.entity.OdinSystem;
+import zoeque.odin.system.domain.repository.OdinSystemRepository;
+import zoeque.odin.system.dto.OdinSystemDto;
+import zoeque.odin.system.controller.OdinSystemController;
 import zoeque.odin.tool.DatabaseDropService;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;

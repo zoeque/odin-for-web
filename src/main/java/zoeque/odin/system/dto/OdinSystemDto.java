@@ -1,4 +1,4 @@
-package zoeque.odin.dto;
+package zoeque.odin.system.dto;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.AllArgsConstructor;

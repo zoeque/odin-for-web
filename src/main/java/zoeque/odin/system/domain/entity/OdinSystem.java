@@ -1,4 +1,4 @@
-package zoeque.odin.domain.system.entity;
+package zoeque.odin.system.domain.entity;
 
 import io.vavr.control.Try;
 import jakarta.persistence.Entity;

@@ -1,12 +1,12 @@
-package zoeque.odin.usecase.system;
+package zoeque.odin.system.usecase;
 
 import io.vavr.control.Try;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import zoeque.odin.domain.system.entity.OdinSystem;
-import zoeque.odin.domain.system.factory.OdinSystemFactory;
-import zoeque.odin.domain.system.repository.OdinSystemRepository;
-import zoeque.odin.dto.OdinSystemDto;
+import zoeque.odin.system.domain.entity.OdinSystem;
+import zoeque.odin.system.domain.factory.OdinSystemFactory;
+import zoeque.odin.system.domain.repository.OdinSystemRepository;
+import zoeque.odin.system.dto.OdinSystemDto;
 
 /**
  * The usecase class to create or edit the system option.

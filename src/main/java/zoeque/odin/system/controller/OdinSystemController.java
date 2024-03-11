@@ -1,4 +1,4 @@
-package zoeque.odin.controller;
+package zoeque.odin.system.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import zoeque.odin.domain.system.entity.OdinSystem;
-import zoeque.odin.dto.OdinSystemDto;
-import zoeque.odin.usecase.system.OdinSystemService;
+import zoeque.odin.system.domain.entity.OdinSystem;
+import zoeque.odin.system.dto.OdinSystemDto;
+import zoeque.odin.system.usecase.OdinSystemService;
 
 @RestController
 @RequestMapping("system")

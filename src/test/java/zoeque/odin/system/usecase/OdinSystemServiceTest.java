@@ -1,4 +1,4 @@
-package zoeque.odin.domain.system.factory;
+package zoeque.odin.system.usecase;
 
 import io.vavr.control.Try;
 import org.junit.jupiter.api.Assertions;
@@ -8,19 +8,19 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import zoeque.odin.domain.system.entity.OdinSystem;
-import zoeque.odin.domain.system.repository.OdinSystemRepository;
+import zoeque.odin.system.domain.entity.OdinSystem;
+import zoeque.odin.system.domain.repository.OdinSystemRepository;
 import zoeque.odin.tool.DatabaseDropService;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-public class OdinSystemFactoryTest {
+public class OdinSystemServiceTest {
   @Autowired
-  OdinSystemFactory factory;
+  DatabaseDropService dropService;
   @Autowired
   OdinSystemRepository repository;
   @Autowired
-  DatabaseDropService dropService;
+  OdinSystemService service;
 
   @BeforeEach
   public void cleanAllDataInDb() {
@@ -28,15 +28,15 @@ public class OdinSystemFactoryTest {
   }
 
   @Test
-  public void whenSystemDoesNotExistInDb_createNewInstance() {
-    Try<OdinSystem> odinSystems = factory.create(false, false, 3, 0);
+  public void attemptCreateNewSystemEntity_returnSuccess() {
+    Try<OdinSystem> odinSystems = service.create();
     Assertions.assertTrue(odinSystems.isSuccess());
   }
 
   @Test
-  public void whenSystemExistsInDb_doesNotCreateNewInstance() {
+  public void attemptCreateSystem_ifEntityIsAlreadyExist_returnFailure() {
     repository.save(new OdinSystem(false, false, 3, 0));
-    Try<OdinSystem> odinSystems = factory.create(false, false, 3, 0);
+    Try<OdinSystem> odinSystems = service.create();
     Assertions.assertTrue(odinSystems.isFailure());
   }
 }

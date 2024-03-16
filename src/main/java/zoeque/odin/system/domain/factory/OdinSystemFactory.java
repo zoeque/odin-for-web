@@ -1,10 +1,10 @@
-package zoeque.odin.domain.system.factory;
+package zoeque.odin.system.domain.factory;
 
 import io.vavr.control.Try;
 import java.util.List;
 import org.springframework.stereotype.Service;
-import zoeque.odin.domain.system.entity.OdinSystem;
-import zoeque.odin.domain.system.repository.OdinSystemRepository;
+import zoeque.odin.system.domain.entity.OdinSystem;
+import zoeque.odin.system.domain.repository.OdinSystemRepository;
 
 /**
  * The factory class to create new

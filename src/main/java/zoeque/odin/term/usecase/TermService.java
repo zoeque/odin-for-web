@@ -17,6 +17,12 @@ public class TermService {
   TermRepository repository;
   TermFactory factory;
 
+  public TermService(TermRepository repository,
+                     TermFactory factory) {
+    this.repository = repository;
+    this.factory = factory;
+  }
+
   /**
    * Create {@link Term} entity and save it in DB.
    *

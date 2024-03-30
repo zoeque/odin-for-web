@@ -1,5 +1,6 @@
 package zoeque.odin.term.usecase;
 
+import io.vavr.control.Try;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,9 +31,10 @@ public class TermServiceTest {
   @Test
   public void givenDto_whenSave_thenCreatedInDb() {
     TermDto termDto = new TermDto(new WordDto("test"), new MeaningDto("test"));
-    service.create(termDto);
+    Try<TermDto> createTry = service.create(termDto);
 
     List<Term> all = repository.findAll();
+    Assertions.assertTrue(createTry.isSuccess());
     Assertions.assertEquals(1, all.size());
   }
 }

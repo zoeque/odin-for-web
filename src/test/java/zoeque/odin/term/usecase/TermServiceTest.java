@@ -37,4 +37,19 @@ public class TermServiceTest {
     Assertions.assertTrue(createTry.isSuccess());
     Assertions.assertEquals(1, all.size());
   }
+
+  @Test
+  public void givenDto_whenDelete_thenNoDataInDb() {
+    TermDto termDto = new TermDto(new WordDto("test"), new MeaningDto("test"));
+    Try<TermDto> createTry = service.create(termDto);
+    Assertions.assertTrue(createTry.isSuccess());
+    List<Term> allBefore = repository.findAll();
+    Assertions.assertEquals(1, allBefore.size());
+
+    Try<TermDto> deleteTry = service.delete(termDto);
+    List<Term> allAfter = repository.findAll();
+    Assertions.assertTrue(deleteTry.isSuccess());
+    Assertions.assertEquals(0, allAfter.size());
+
+  }
 }

@@ -57,4 +57,16 @@ public class Term {
     this.meaning = meaning;
   }
 
+  /**
+   * Update the entity.
+   *
+   * @param meaning new {@link Meaning}
+   * @param state   new state with the {@link MemorizedState} value.
+   * @return The instance of the {@link Term}.
+   */
+  public Term updateEntity(Meaning meaning, MemorizedState state) {
+    setMeaning(meaning);
+    this.state = state;
+    return this;
+  }
 }

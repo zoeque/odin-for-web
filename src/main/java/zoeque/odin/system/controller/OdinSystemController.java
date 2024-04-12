@@ -10,6 +10,9 @@ import zoeque.odin.system.domain.entity.OdinSystem;
 import zoeque.odin.system.dto.OdinSystemDto;
 import zoeque.odin.system.usecase.OdinSystemService;
 
+/**
+ * The controller class to handle odin system.
+ */
 @RestController
 @RequestMapping("system")
 @CrossOrigin(origins = "*")

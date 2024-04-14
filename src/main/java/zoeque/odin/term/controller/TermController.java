@@ -3,6 +3,7 @@ package zoeque.odin.term.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import zoeque.odin.term.dto.TermDto;
@@ -22,7 +23,7 @@ public class TermController {
   }
 
   @PostMapping("/create")
-  public ResponseEntity create(TermDto dto) {
+  public ResponseEntity create(@RequestBody TermDto dto) {
     try {
       TermDto termDto = service.create(dto).get();
       return ResponseEntity.ok(termDto);

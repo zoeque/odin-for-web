@@ -31,4 +31,14 @@ public class TermController {
       return ResponseEntity.badRequest().body(e);
     }
   }
+
+  @PostMapping("/edit")
+  public ResponseEntity update(@RequestBody TermDto dto) {
+    try {
+      TermDto termDto = service.update(dto).get();
+      return ResponseEntity.ok(termDto);
+    } catch (Exception e) {
+      return ResponseEntity.badRequest().body(e);
+    }
+  }
 }

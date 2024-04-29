@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import zoeque.odin.term.dto.TermDto;
-import zoeque.odin.term.usecase.TermService;
+import zoeque.odin.term.application.TermService;
 
 /**
  * The controller class to handle Term instances.

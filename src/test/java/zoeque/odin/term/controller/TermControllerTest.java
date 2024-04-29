@@ -19,7 +19,7 @@ import zoeque.odin.term.domain.repository.TermRepository;
 import zoeque.odin.term.dto.TermDto;
 import zoeque.odin.term.dto.valueobject.MeaningDto;
 import zoeque.odin.term.dto.valueobject.WordDto;
-import zoeque.odin.term.usecase.TermService;
+import zoeque.odin.term.application.TermService;
 import zoeque.odin.tool.DatabaseDropService;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;

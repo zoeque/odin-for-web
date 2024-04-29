@@ -1,4 +1,4 @@
-package zoeque.odin.system.usecase;
+package zoeque.odin.system.application;
 
 import io.vavr.control.Try;
 import org.junit.jupiter.api.Assertions;

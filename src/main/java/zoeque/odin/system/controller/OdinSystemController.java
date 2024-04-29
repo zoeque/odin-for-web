@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import zoeque.odin.system.domain.entity.OdinSystem;
 import zoeque.odin.system.dto.OdinSystemDto;
-import zoeque.odin.system.usecase.OdinSystemService;
+import zoeque.odin.system.application.OdinSystemService;
 
 /**
  * The controller class to handle odin system.

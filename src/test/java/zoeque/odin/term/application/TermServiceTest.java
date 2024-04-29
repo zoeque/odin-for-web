@@ -1,4 +1,4 @@
-package zoeque.odin.term.usecase;
+package zoeque.odin.term.application;
 
 import io.vavr.control.Try;
 import java.util.List;

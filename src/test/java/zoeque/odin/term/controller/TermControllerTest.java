@@ -75,4 +75,37 @@ public class TermControllerTest {
     List<Term> all = repository.findAll();
     Assertions.assertEquals(MemorizedState.MEMORIZED, all.get(0).getState());
   }
+
+  @Test
+  public void sendMockRestRequest_attemptToDelete_return200() throws Exception {
+    TermDto dto = new TermDto(new WordDto("test"), new MeaningDto("test"), MemorizedState.NOT_MEMORIZED);
+    Try<TermDto> createTry = termService.create(dto);
+    // check the DTO is created on Database
+    Assertions.assertTrue(createTry.isSuccess());
+
+    String json = mapper.writeValueAsString(dto);
+
+    mvc.perform(post("/term/delete")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(json))
+            .andExpect(status().isOk());
+
+    List<Term> all = repository.findAll();
+    Assertions.assertEquals(0, all.size());
+  }
+
+  @Test
+  public void sendMockRequestToTermDoesNotExistInDB_whenDelete_return200() throws Exception {
+    TermDto dto = new TermDto(new WordDto("test"), new MeaningDto("test"), MemorizedState.NOT_MEMORIZED);
+
+    String json = mapper.writeValueAsString(dto);
+
+    mvc.perform(post("/term/delete")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(json))
+            .andExpect(status().isOk());
+
+    List<Term> all = repository.findAll();
+    Assertions.assertEquals(0, all.size());
+  }
 }
